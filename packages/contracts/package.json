@@ -1,0 +1,6 @@
+{
+  "name": "@smart-todo/contracts",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": { ".": "./src/index.ts" }
+}

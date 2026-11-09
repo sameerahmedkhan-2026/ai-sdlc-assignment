@@ -1,0 +1,25 @@
+{
+  "name": "smart-todo-task-manager",
+  "private": true,
+  "type": "module",
+  "workspaces": ["backend", "frontend", "packages/contracts"],
+  "scripts": {
+    "install:all": "npm install",
+    "lint": "eslint .",
+    "type-check": "npm run type-check --workspace backend && npm run type-check --workspace frontend",
+    "test:unit": "npm run test:unit --workspace backend",
+    "test:contract": "npm run test:contract --workspace backend",
+    "test:integration": "npm run test:integration --workspace backend",
+    "test:ui": "npm run test --workspace frontend",
+    "test": "npm run test:unit && npm run test:contract && npm run test:integration && npm run test:ui",
+    "dev": "npm run dev --workspace backend",
+    "build": "npm run build --workspace frontend && npm run build --workspace backend",
+    "harness": "bash harness/run.sh"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/node": "^22.10.2",
+    "eslint": "^9.17.0",
+    "typescript": "^5.7.2"
+  }
+}
