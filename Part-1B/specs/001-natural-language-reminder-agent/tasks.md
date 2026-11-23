@@ -163,7 +163,7 @@ repair failures, and obtain human acceptance.
 - [X] T072 Re-run the unchanged evaluation dataset and all mandatory quality gates, preserving final evidence in `Part-1B/evidence/final-generation/`
 - [X] T073 Update `Part-1B/evidence/harness-log.md` with model/configuration, threshold, scoring, failures, repairs, re-evaluation, limitations, and no-secret assurance
 - [X] T074 Run the complete `Part-1B/quickstart.md` validation guide and record actual outcomes in `Part-1B/evidence/quickstart-validation.md`
-- [ ] T075 Perform final human review against the constitution, specification, plan, tasks, contracts, evaluation results, and limitations; record `ACCEPT` or `REJECT` in `Part-1B/evidence/final-review.md`
+- [X] T075 Perform final human review against the constitution, specification, plan, tasks, contracts, evaluation results, and limitations; record `ACCEPT` or `REJECT` in `Part-1B/evidence/final-review.md`
 
 ## Dependencies and Execution Order
 
