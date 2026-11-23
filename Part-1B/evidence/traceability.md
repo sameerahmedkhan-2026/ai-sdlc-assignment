@@ -1,0 +1,1 @@
+Requirements traceability: schema and request contract are covered by validation and contract tests; create/clarify/reschedule/snooze/safety are represented in 18 fixed cases; structural, invariant, semantic and threshold evaluation is implemented by the evaluation runner. Dataset categories: normal, boundary, ambiguous, missing, malformed, adversarial.

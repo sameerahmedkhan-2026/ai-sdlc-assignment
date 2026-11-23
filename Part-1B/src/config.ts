@@ -1,0 +1,1 @@
+export const config={mode:process.env.REMINDER_MODE||'llm',baseUrl:process.env.LLM_BASE_URL,apiKey:process.env.LLM_API_KEY,model:process.env.LLM_MODEL,timeoutMs:Number(process.env.LLM_TIMEOUT_MS||10000),port:Number(process.env.PORT||3001)};

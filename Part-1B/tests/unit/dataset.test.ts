@@ -1,0 +1,1 @@
+import {describe,it,expect} from 'vitest'; import data from '../../evals/dataset.json'; describe('evaluation dataset',()=>it('has required breadth',()=>{expect(data.length).toBeGreaterThanOrEqual(15);expect(new Set(data.map(x=>x.category)).size).toBe(6)}));

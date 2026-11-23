@@ -1,0 +1,1 @@
+import type {EvaluationCase} from './types'; import type {ReminderInterpretation} from '../domain/types'; export function quality(c:EvaluationCase,o:ReminderInterpretation){if(c.expectedProperties.requiresClarification)return o.intent==='clarify'&&!!o.clarificationQuestion?1:0;if(c.expectedProperties.intent&&o.intent===c.expectedProperties.intent)return 1;return .5}

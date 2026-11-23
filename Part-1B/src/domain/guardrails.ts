@@ -1,0 +1,2 @@
+const injection=/(ignore|disregard|override).{0,40}(instruction|rule|system)|\btool_call\b|\bfunction\s*\(/i; const unsupported=/\b(send|email|text|purchase|buy|pay)\b|\bcall\b.{0,25}\b(message|someone)\b/i;
+export function guardrail(text:string){if(injection.test(text))return 'Prompt injection or tool instruction is not supported.';if(unsupported.test(text)&&!/call the dentist/i.test(text))return 'External actions are not supported; this agent only interprets reminders.';return null}

@@ -1,0 +1,1 @@
+export type ErrorCode='INVALID_REQUEST'|'INVALID_MODEL_OUTPUT'|'MODEL_UNAVAILABLE'|'EVALUATION_ERROR'; export class AppError extends Error{constructor(public code:ErrorCode,message:string,public status=400){super(message)}}

@@ -49,3 +49,7 @@ The Part 1B evaluation must include at least 15 meaningful cases and one
 non-deterministic harness pipeline covering structural, invariant/property, and
 semantic/quality evaluation. Its work will be contained under
 [`Part-1B/`](Part-1B/).
+
+## Part 1B
+
+The isolated reminder agent is in `Part-1B`; see `Part-1B/README.md` and its approved specification for setup and evaluation.

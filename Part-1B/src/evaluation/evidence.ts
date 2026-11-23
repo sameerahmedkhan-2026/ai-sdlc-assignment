@@ -1,0 +1,1 @@
+export function redact(value:unknown):unknown{if(typeof value==='string')return value.replace(/(sk-[A-Za-z0-9_-]+|Bearer\s+\S+)/gi,'[REDACTED]');if(Array.isArray(value))return value.map(redact);if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([k,v])=>[k,/key|token|authorization|prompt/i.test(k)?'[REDACTED]':redact(v)]));return value}

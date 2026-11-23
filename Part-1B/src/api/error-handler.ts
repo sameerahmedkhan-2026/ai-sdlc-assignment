@@ -1,0 +1,1 @@
+import type {Request,Response,NextFunction} from 'express'; import {AppError} from '../domain/errors'; export function errorHandler(e:unknown,_req:Request,res:Response,_next:NextFunction){const x=e instanceof AppError?e:new AppError('EVALUATION_ERROR','An unexpected error occurred',500);res.status(x.status).json({error:{code:x.code,message:x.message}})}

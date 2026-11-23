@@ -1,0 +1,4 @@
+- Fixed clarification schedule regex parsing.
+- Added CSS module declaration and safe schema cast.
+- Prevented `tomorrow` subject truncation.
+- Expanded unsupported-action guardrail and allowed deterministic empty-input clarification while API envelope validation still rejects empty requests.

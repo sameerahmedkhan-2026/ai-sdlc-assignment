@@ -1,0 +1,1 @@
+import {validateInterpretation} from '../validation/output-schema'; export function structural(output:unknown){try{validateInterpretation(output);return {score:1,failures:[] as string[]}}catch(e){return {score:0,failures:[e instanceof Error?e.message:'invalid output']}}}

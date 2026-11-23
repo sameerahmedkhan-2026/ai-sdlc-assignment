@@ -1,0 +1,1 @@
+import {describe,it,expect} from 'vitest'; import app from '../../src/server'; import {interpret} from '../../src/domain/reminder-interpreter'; describe('contract',()=>it('returns seven fields',()=>{const x=interpret({text:'Remind me tomorrow at 10am',referenceTime:'2026-11-23T09:00:00Z',timezone:'UTC'});expect(Object.keys(x)).toHaveLength(7)}));

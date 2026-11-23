@@ -1,0 +1,1 @@
+Validation completed: npm install; npm test (7 passed); npm run type-check (passed); npm run build (passed); npm run evaluate (18 cases, PASS). External model credentials were not configured and no external service was called.

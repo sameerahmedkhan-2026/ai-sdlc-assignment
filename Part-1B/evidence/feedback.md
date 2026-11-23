@@ -1,0 +1,1 @@
+Initial baseline had no runnable package or implementation. During validation, a malformed clarification regex, TypeScript CSS declaration, and two interpreter guardrail/date extraction edge cases were found and repaired. Requirements and evaluation cases were not weakened.
