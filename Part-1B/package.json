@@ -15,6 +15,7 @@
     "dependencies": {
         "@vitejs/plugin-react": "latest",
         "ajv": "latest",
+        "dotenv": "^18.0.10",
         "express": "latest",
         "react": "latest",
         "react-dom": "latest",
