@@ -1,4 +1,16 @@
-# Smart Todo & Task Manager
+# AI-Augmented SDLC Assignment
+
+This repository contains both assignment applications:
+
+- [Part 1A](Part-1A/) — completed Smart Todo & Task Manager deterministic application.
+- [Part 1B](Part-1B/) — Natural-Language Reminder Agent scaffold, to be developed
+  using the Spec Kit workflow.
+
+Part 1A remains at the repository root to preserve its validated workspace,
+scripts, harness, and evidence paths. The `Part-1A/README.md` file provides the
+submission index for that layout.
+
+## Part 1A — Smart Todo & Task Manager
 
 ## Run locally
 
@@ -26,3 +38,14 @@ npm run harness
 
 The API contract is documented in
 [`specs/001-smart-todo-task-manager/contracts/rest-api.md`](specs/001-smart-todo-task-manager/contracts/rest-api.md).
+
+## Part 1B — Natural-Language Reminder Agent
+
+Part 1B will parse natural-language reminder requests into structured
+reminders, interpret date/time information, support reschedule/snooze intent,
+and request clarification when mandatory information is missing.
+
+The Part 1B evaluation must include at least 15 meaningful cases and one
+non-deterministic harness pipeline covering structural, invariant/property, and
+semantic/quality evaluation. Its work will be contained under
+[`Part-1B/`](Part-1B/).
