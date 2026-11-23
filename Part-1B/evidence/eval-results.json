@@ -23,7 +23,7 @@
       "structural": 1,
       "invariant": 1,
       "semantic": 1,
-      "latencyMs": 14,
+      "latencyMs": 13,
       "passed": true,
       "failures": []
     },
@@ -41,7 +41,7 @@
       "structural": 1,
       "invariant": 1,
       "semantic": 1,
-      "latencyMs": 0,
+      "latencyMs": 1,
       "passed": true,
       "failures": []
     },
@@ -149,7 +149,7 @@
       "structural": 1,
       "invariant": 1,
       "semantic": 1,
-      "latencyMs": 1,
+      "latencyMs": 0,
       "passed": true,
       "failures": []
     },
@@ -311,7 +311,7 @@
       "structural": 1,
       "invariant": 1,
       "semantic": 1,
-      "latencyMs": 0,
+      "latencyMs": 1,
       "passed": true,
       "failures": []
     },
