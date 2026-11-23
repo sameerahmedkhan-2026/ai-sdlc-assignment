@@ -84,13 +84,17 @@ Part-1B/specs/001-natural-language-reminder-agent/
 Part-1B/
 ├── package.json
 ├── tsconfig.json
+├── vite.config.ts
+├── index.html
 ├── src/
 │   ├── api/
 │   ├── domain/
 │   ├── evaluation/
 │   ├── llm/
+│   │   └── response-parser.ts
 │   ├── validation/
 │   ├── frontend/
+│   │   └── main.tsx
 │   └── server.ts
 ├── prompts/
 │   └── reminder-system.md
@@ -102,6 +106,9 @@ Part-1B/
 │   └── dataset.json
 ├── .harness/
 │   ├── run.sh
+│   ├── evaluate.ts
+│   ├── security.sh
+│   └── traceability.ts
 │   ├── schema/
 │   ├── property/
 │   └── quality/
@@ -124,8 +131,8 @@ application behavior as the UI/API; and evidence is kept separate from source.
    service.
 3. The interpretation service sends a constrained prompt to the external LLM
    adapter.
-4. The response parser extracts JSON only, then validates the exact output
-   schema.
+4. The response parser extracts JSON only and rejects malformed or extra
+   content, then the schema validator checks the exact output shape.
 5. Deterministic invariant and guardrail checks validate intent, nullability,
    date/time rules, and prohibited actions.
 6. The API returns the validated interpretation or a stable categorized error.

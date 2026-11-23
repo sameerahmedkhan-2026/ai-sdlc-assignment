@@ -20,9 +20,9 @@ must be created and run before corresponding implementation tasks.
 and evidence directories without implementing reminder behavior.
 
 - [ ] T001 Create the Part 1B package structure in `Part-1B/package.json`, `Part-1B/tsconfig.json`, `Part-1B/src/`, `Part-1B/tests/`, `Part-1B/prompts/`, `Part-1B/evals/`, `Part-1B/.harness/`, and `Part-1B/evidence/`
-- [ ] T002 [P] Configure TypeScript, linting, formatting, Vitest, and build scripts in `Part-1B/tsconfig.json`, `Part-1B/vitest.config.ts`, `Part-1B/eslint.config.js`, and `Part-1B/package.json`
+- [ ] T002 [P] Configure TypeScript, Vite, linting, formatting, Vitest, and build scripts in `Part-1B/tsconfig.json`, `Part-1B/vite.config.ts`, `Part-1B/vitest.config.ts`, `Part-1B/eslint.config.js`, and `Part-1B/package.json`
 - [ ] T003 [P] Configure environment examples and secret exclusions for the external model adapter in `Part-1B/.env.example`, `Part-1B/.gitignore`, and `Part-1B/src/config.ts`
-- [ ] T004 [P] Create application and evaluation entry-point placeholders in `Part-1B/src/server.ts`, `Part-1B/src/api/`, `Part-1B/src/evaluation/`, and `Part-1B/.harness/run.sh`
+- [ ] T004 [P] Create application, React/Vite, and evaluation entry-point placeholders in `Part-1B/index.html`, `Part-1B/src/frontend/main.tsx`, `Part-1B/src/server.ts`, `Part-1B/src/api/`, `Part-1B/src/evaluation/`, and `Part-1B/.harness/run.sh`
 - [ ] T005 [P] Add Part 1B commands and validation instructions to `Part-1B/README.md` and the root `README.md`
 - [ ] T006 Capture the genuine pre-implementation Part 1B snapshot and baseline command results in `Part-1B/evidence/initial-generation/` before any repair or correction
 
@@ -61,7 +61,7 @@ future dates, then verify schema validity, subject fidelity, future
 ### Tests for User Story 1
 
 - [ ] T018 [P] [US1] Create representative create-reminder evaluation cases with expected properties and semantic rubrics in `Part-1B/evals/dataset.json`
-- [ ] T019 [P] [US1] Write create-intent unit tests for subject extraction, explicit times, relative times, timezone preservation, and future scheduling in `Part-1B/tests/unit/create-reminder.test.ts`
+- [ ] T019 [P] [US1] Write create-intent and response-parser unit tests for subject extraction, explicit times, relative times, timezone preservation, future scheduling, JSON-only parsing, and extra-content rejection in `Part-1B/tests/unit/create-reminder.test.ts` and `Part-1B/tests/unit/response-parser.test.ts`
 - [ ] T020 [P] [US1] Write API contract tests for `POST /api/reminders/interpret` create requests and exact response fields in `Part-1B/tests/contract/reminder-api.test.ts`
 - [ ] T021 [US1] Run User Story 1 tests and capture genuine pre-implementation failures in `Part-1B/evidence/initial-generation/us1-red.log`
 
@@ -70,9 +70,9 @@ future dates, then verify schema validity, subject fidelity, future
 - [ ] T022 [P] [US1] Write reminder system prompt and structured-output instructions in `Part-1B/prompts/reminder-system.md`
 - [ ] T023 [US1] Implement the external model configuration and provider-agnostic adapter in `Part-1B/src/llm/llm-client.ts` using environment credentials without logging secrets
 - [ ] T024 [US1] Implement prompt construction with fixed reference time, timezone, schema rules, and one-request scope in `Part-1B/src/llm/prompt-builder.ts`
-- [ ] T025 [US1] Implement create-intent interpretation and normalized output mapping in `Part-1B/src/domain/reminder-interpreter.ts`
+- [ ] T025 [US1] Implement JSON-only model response parsing and create-intent interpretation with normalized output mapping in `Part-1B/src/llm/response-parser.ts` and `Part-1B/src/domain/reminder-interpreter.ts`
 - [ ] T026 [US1] Implement the interpretation endpoint in `Part-1B/src/api/reminder-routes.ts` and wire it through `Part-1B/src/server.ts`
-- [ ] T027 [P] [US1] Implement the minimal reminder input and result display in `Part-1B/src/frontend/ReminderForm.tsx` and `Part-1B/src/frontend/ReminderResult.tsx`
+- [ ] T027 [P] [US1] Implement the minimal reminder input, result display, React/Vite mounting, and UI tests in `Part-1B/src/frontend/ReminderForm.tsx`, `Part-1B/src/frontend/ReminderResult.tsx`, `Part-1B/src/frontend/main.tsx`, and `Part-1B/tests/ui/reminder-form.test.tsx`
 - [ ] T028 [US1] Run User Story 1 unit, contract, and UI tests against the real application path and record results in `Part-1B/evidence/final-generation/us1-green.log`
 
 ## Phase 4: User Story 2 - Request Clarification (Priority: P1)
@@ -84,7 +84,7 @@ reminder-reference information.
 `clarify`, a focused question, null unsupported values, and no invented time.
 
 - [ ] T029 [P] [US2] Add missing-subject, missing-time, ambiguous-date, empty-input, and missing-context cases to `Part-1B/evals/dataset.json`
-- [ ] T030 [P] [US2] Write clarification unit tests for mandatory-field detection, focused questions, nullability, and no invented dates in `Part-1B/tests/unit/clarification.test.ts`
+- [ ] T030 [P] [US2] Write clarification unit and UI tests for mandatory-field detection, focused questions, nullability, no invented dates, and rendered clarification messages in `Part-1B/tests/unit/clarification.test.ts` and `Part-1B/tests/ui/clarification.test.tsx`
 - [ ] T031 [P] [US2] Extend API contract tests for clarification responses and invalid request errors in `Part-1B/tests/contract/reminder-api.test.ts`
 - [ ] T032 [US2] Run User Story 2 tests and capture genuine pre-implementation failures in `Part-1B/evidence/initial-generation/us2-red.log`
 - [ ] T033 [US2] Implement missing-information and ambiguity detection in `Part-1B/src/domain/clarification-rules.ts`
@@ -102,7 +102,7 @@ context and verify intent, target time or positive snooze duration, and
 clarification for missing references.
 
 - [ ] T037 [P] [US3] Add reschedule, snooze, missing-reference, invalid-duration, and past-target cases to `Part-1B/evals/dataset.json`
-- [ ] T038 [P] [US3] Write reschedule and snooze unit tests for intent separation, target-time parsing, positive durations, and nullability in `Part-1B/tests/unit/reschedule-snooze.test.ts`
+- [ ] T038 [P] [US3] Write reschedule, snooze, and UI tests for intent separation, target-time parsing, positive durations, nullability, and rendered results in `Part-1B/tests/unit/reschedule-snooze.test.ts` and `Part-1B/tests/ui/reschedule-snooze.test.tsx`
 - [ ] T039 [P] [US3] Write API contract tests for reschedule and snooze response shapes in `Part-1B/tests/contract/reminder-api.test.ts`
 - [ ] T040 [US3] Run User Story 3 tests and capture genuine pre-implementation failures in `Part-1B/evidence/initial-generation/us3-red.log`
 - [ ] T041 [US3] Implement reschedule and snooze intent rules in `Part-1B/src/domain/reminder-interpreter.ts` and `Part-1B/src/domain/clarification-rules.ts`
@@ -117,7 +117,7 @@ clarification for missing references.
 secret-like, and invalid-model-output cases and verify safe bounded outcomes.
 
 - [ ] T044 [P] [US4] Add prompt-injection, unsupported-action, tool-call, secret-like, malformed, timeout, and invalid-model-output cases to `Part-1B/evals/dataset.json`
-- [ ] T045 [P] [US4] Write guardrail unit tests for untrusted input, no tools, no external actions, reject/clarify behavior, and secret redaction in `Part-1B/tests/unit/guardrails.test.ts`
+- [ ] T045 [P] [US4] Write guardrail and UI tests for untrusted input, no tools, no external actions, reject/clarify behavior, secret redaction, and safe error rendering in `Part-1B/tests/unit/guardrails.test.ts` and `Part-1B/tests/ui/safety-errors.test.tsx`
 - [ ] T046 [P] [US4] Write model-failure contract tests for invalid output, timeout, rate limit, unavailable service, and non-disclosing stable errors in `Part-1B/tests/contract/model-errors.test.ts`
 - [ ] T047 [US4] Run User Story 4 tests and capture genuine pre-implementation failures in `Part-1B/evidence/initial-generation/us4-red.log`
 - [ ] T048 [US4] Implement prompt-injection resistance, unsupported-action rejection, and no-tool-call guardrails in `Part-1B/src/domain/guardrails.ts`
@@ -140,7 +140,7 @@ non-zero exit on failure.
 - [ ] T055 [P] [US5] Write invariant/property evaluator tests for time validity, required clarification, safety, and no-tool rules in `Part-1B/tests/unit/property-evaluator.test.ts`
 - [ ] T056 [P] [US5] Write semantic rubric tests for equivalent wording, subject meaning, temporal meaning, and clarification usefulness in `Part-1B/tests/unit/quality-evaluator.test.ts`
 - [ ] T057 [US5] Run User Story 5 tests and capture genuine pre-implementation failures in `Part-1B/evidence/initial-generation/us5-red.log`
-- [ ] T058 [P] [US5] Create the complete 15-case evaluation dataset with fixed reference times, expected properties, categories, and rubrics in `Part-1B/evals/dataset.json`
+- [ ] T058 [P] [US5] Finalize the complete 15-case evaluation dataset by retaining the US1-US4 cases and adding any remaining categories, fixed reference times, expected properties, and rubrics in `Part-1B/evals/dataset.json`
 - [ ] T059 [US5] Implement structural evaluation and schema metrics in `Part-1B/src/evaluation/structural-evaluator.ts`
 - [ ] T060 [US5] Implement invariant/property and safety evaluation in `Part-1B/src/evaluation/property-evaluator.ts`
 - [ ] T061 [US5] Implement normalized semantic/quality scoring without exact string matching in `Part-1B/src/evaluation/quality-evaluator.ts`
@@ -157,7 +157,7 @@ repair failures, and obtain human acceptance.
 - [ ] T066 [P] Add Part 1B lint, type-check, unit, contract, integration, security, dependency, evaluation, and traceability commands to `Part-1B/package.json` and `Part-1B/.harness/run.sh`
 - [ ] T067 [P] Implement requirement-to-case and requirement-to-test traceability validation in `Part-1B/.harness/traceability.ts` and write `Part-1B/evidence/traceability.md`
 - [ ] T068 [P] Add latency measurement and NFR-005 reporting to `Part-1B/src/evaluation/evaluation-runner.ts` and `Part-1B/evidence/eval-results.json`
-- [ ] T069 Run the initial-generation harness and preserve actual structural, invariant, semantic, and service failures in `Part-1B/evidence/initial-generation/`
+- [ ] T069 Run the first full baseline harness before repairs and preserve actual structural, invariant, semantic, and service failures in `Part-1B/evidence/initial-generation/`
 - [ ] T070 Feed genuine failed cases, outputs, failed properties, and evaluator results back to the coding agent in `Part-1B/evidence/feedback.md` without weakening requirements or removing cases
 - [ ] T071 Repair confirmed application, prompt, parser, validator, or guardrail failures and document changed paths in `Part-1B/evidence/repairs.md`
 - [ ] T072 Re-run the unchanged evaluation dataset and all mandatory quality gates, preserving final evidence in `Part-1B/evidence/final-generation/`

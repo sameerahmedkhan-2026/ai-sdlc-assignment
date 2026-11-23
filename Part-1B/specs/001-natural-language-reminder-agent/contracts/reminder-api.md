@@ -59,7 +59,8 @@ provider internals, stack traces, or raw model credentials.
 
 - The endpoint interprets requests only; it does not execute calendar,
   notification, messaging, purchase, or other external actions.
-- Unsupported or unsafe requests return a valid `reject` interpretation or a
-  stable request error as appropriate.
+- Unsupported consequential actions and prompt-injection attempts return a
+  valid `reject` interpretation. Stable request errors are reserved for
+  malformed or invalid request envelopes before interpretation.
 - The service MUST use fixed `referenceTime` and `timezone` values supplied by
   the caller rather than the evaluator's wall clock.
