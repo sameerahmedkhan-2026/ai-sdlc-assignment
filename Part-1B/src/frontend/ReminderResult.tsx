@@ -1,1 +1,27 @@
-export function ReminderResult({result}:{result:any}){return <section aria-live="polite"><h2>{result.intent}</h2>{result.subject&&<p>Subject: {result.subject}</p>}{result.remindAt&&<p>When: {result.remindAt} ({result.timezone})</p>}{result.snoozeMinutes&&<p>Snooze: {result.snoozeMinutes} minutes</p>}{result.clarificationQuestion&&<p>{result.clarificationQuestion}</p>}{result.reason&&<p>{result.reason}</p>}</section>}
+export function ReminderResult({ result }: { result: any }) {
+  return (
+    <section className="result-card" aria-live="polite">
+      <p className="eyebrow">Interpreted result</p>
+      <h2>{result.intent}</h2>
+      {result.subject && (
+        <p>
+          <strong>Subject:</strong> {result.subject}
+        </p>
+      )}
+      {result.remindAt && (
+        <p>
+          <strong>When:</strong> {result.remindAt} ({result.timezone})
+        </p>
+      )}
+      {result.snoozeMinutes && (
+        <p>
+          <strong>Snooze:</strong> {result.snoozeMinutes} minutes
+        </p>
+      )}
+      {result.clarificationQuestion && (
+        <p className="clarification">{result.clarificationQuestion}</p>
+      )}
+      {result.reason && <p>{result.reason}</p>}
+    </section>
+  );
+}
