@@ -1,1 +1,39 @@
-import {useState} from 'react'; import {ReminderResult} from './ReminderResult'; export function ReminderForm(){const [text,setText]=useState('');const [result,setResult]=useState<any>();const [error,setError]=useState('');async function submit(e:any){e.preventDefault();setError('');const r=await fetch('/api/reminders/interpret',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({text,referenceTime:new Date().toISOString(),timezone:Intl.DateTimeFormat().resolvedOptions().timeZone})});const j=await r.json();r.ok?setResult(j):setError(j.error?.message||'Request failed')}return <main><h1>Reminder agent</h1><form onSubmit={submit}><label htmlFor="reminder">Describe your reminder</label><textarea id="reminder" value={text} onChange={e=>setText(e.target.value)} required/><button>Interpret</button></form>{error&&<p role="alert">{error}</p>}{result&&<ReminderResult result={result}/>}</main>}
+import { useState } from "react";
+import { ReminderResult } from "./ReminderResult";
+export function ReminderForm() {
+  const [text, setText] = useState("");
+  const [result, setResult] = useState<any>();
+  const [error, setError] = useState("");
+  async function submit(e: any) {
+    e.preventDefault();
+    setError("");
+    const r = await fetch("/api/reminders/interpret", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        text,
+        referenceTime: new Date().toISOString(),
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      }),
+    });
+    const j = await r.json();
+    r.ok ? setResult(j) : setError(j.error?.message || "Request failed");
+  }
+  return (
+    <main>
+      <h1>Reminder agent</h1>
+      <form onSubmit={submit}>
+        <label htmlFor="reminder">Describe your reminder</label>
+        <textarea
+          id="reminder"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          required
+        />
+        <button>Interpret</button>
+      </form>
+      {error && <p role="alert">{error}</p>}
+      {result && <ReminderResult result={result} />}
+    </main>
+  );
+}
