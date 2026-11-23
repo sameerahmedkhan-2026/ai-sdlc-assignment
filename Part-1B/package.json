@@ -23,13 +23,13 @@
     },
     "devDependencies": {
         "@types/express": "latest",
-        "@types/node": "latest",
+        "@types/node": "^26.6.6",
         "@types/react": "latest",
         "@types/react-dom": "latest",
-        "typescript": "latest",
-        "vitest": "latest",
-        "jsdom": "latest",
         "eslint": "latest",
-        "typescript-eslint": "latest"
+        "jsdom": "latest",
+        "typescript": "latest",
+        "typescript-eslint": "latest",
+        "vitest": "latest"
     }
 }
