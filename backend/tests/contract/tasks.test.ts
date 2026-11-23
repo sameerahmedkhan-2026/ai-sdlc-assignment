@@ -8,6 +8,21 @@ import { createApp } from "../../src/app.js";
 async function app() { return createApp(join(await mkdtemp(join(tmpdir(), "todo-")), "tasks.json")); }
 
 describe("task API", () => {
+  it("allows the local frontend origin and handles CORS preflight", async () => {
+    const api = request(await app());
+    const preflight = await api.options("/api/tasks")
+      .set("Origin", "http://localhost:5173")
+      .set("Access-Control-Request-Method", "POST")
+      .set("Access-Control-Request-Headers", "Content-Type")
+      .expect(204);
+    expect(preflight.headers["access-control-allow-origin"]).toBe("http://localhost:5173");
+    expect(preflight.headers["access-control-allow-methods"]).toContain("POST");
+    const response = await api.post("/api/tasks")
+      .set("Origin", "http://localhost:5173")
+      .send({ title: "cors" })
+      .expect(201);
+    expect(response.headers["access-control-allow-origin"]).toBe("http://localhost:5173");
+  });
   it("creates and retrieves a task with defaults", async () => {
     const api = request(await app());
     const created = await api.post("/api/tasks").send({ title: "  Review  " }).expect(201);

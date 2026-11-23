@@ -43,19 +43,19 @@ The latest complete run passed lint, type-check, build, unit, contract,
 integration, UI, security, dependency, performance, acceptance, and
 traceability checks. Source test discovery excludes generated `dist/**`
 directories. The latest source test counts were backend unit 2, backend
-contract 8, backend integration 3, and frontend UI 2 (15 tests total).
+contract 9, backend integration 3, and frontend UI 2 (16 tests total).
 The latest performance evidence used 25 measured samples per operation over
 the 1,000-task dataset, against the 500 ms p95 threshold:
 
 | Operation |      p95 |
 | --------- | -------: |
-| List      |  1.18 ms |
-| Filter    |  0.85 ms |
-| Sort      |  0.90 ms |
-| Create    | 13.06 ms |
-| Retrieve  |  0.67 ms |
-| Update    | 13.20 ms |
-| Delete    | 25.43 ms |
+| List | 1.33 ms |
+| Filter | 0.77 ms |
+| Sort | 1.28 ms |
+| Create | 11.95 ms |
+| Retrieve | 0.70 ms |
+| Update | 12.18 ms |
+| Delete | 24.03 ms |
 
 The traceability log reported all 31 requirements mapped to existing tasks and
 automated test/check references, with zero invalid task references and zero
